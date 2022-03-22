@@ -1,0 +1,21 @@
+version: "3"
+services:
+  MUS-QL:
+    image: MUS-QL-image
+    ports:
+      - "8080:8080"
+    networks:
+      - MUS-QL-networks
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - MUS-QL-networks
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=musqlDB  
+
+networks:
+  MUS-QL-networks:
